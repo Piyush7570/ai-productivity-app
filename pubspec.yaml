@@ -1,0 +1,50 @@
+name: ai_productivity_app
+description: AI-Powered Productivity Application with Riverpod, Hive, and Gemini.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  flutter_riverpod: ^2.4.9
+  riverpod_annotation: ^2.3.3
+
+  # Local Storage & Preferences
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  shared_preferences: ^2.2.2
+
+  # Firebase Integration (Online mode)
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.15.3
+  cloud_firestore: ^4.13.3
+
+  # Official Gemini SDK
+  google_generative_ai: ^0.2.0
+
+  # Visualization & Formatting
+  fl_chart: ^0.66.0
+  intl: ^0.19.0
+  uuid: ^4.3.3
+  flutter_markdown: ^0.6.18+2
+
+  # Local Reminders
+  flutter_local_notifications: ^16.1.0
+  timezone: ^0.9.2
+
+  # UI Packages
+  google_fonts: ^6.1.0
+  flutter_spinkit: ^5.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.8
+
+flutter:
+  uses-material-design: true
