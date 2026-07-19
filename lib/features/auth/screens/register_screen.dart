@@ -79,7 +79,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
               height: 300,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: theme.colorScheme.primary.withOpacity(0.12),
+                color: theme.colorScheme.primary.withValues(alpha: 0.12),
               ),
             ),
           ),
@@ -102,15 +102,15 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       ),
                     ),
                     Text(
-                      'Join Antigravity AI Productivity assistant',
+                      'Join TaskNova AI Productivity assistant',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.outfit(
                         fontSize: 16,
-                        color: theme.textTheme.bodyMedium?.color?.withOpacity(0.6),
+                        color: theme.textTheme.bodyMedium?.color
+                            ?.withValues(alpha: 0.6),
                       ),
                     ),
                     const SizedBox(height: 30),
-                    
                     GlassCard(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -123,7 +123,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                               prefixIcon: Icon(Icons.person_outline),
                             ),
                             validator: (val) {
-                              if (val == null || val.isEmpty) return 'Enter your name';
+                              if (val == null || val.isEmpty)
+                                return 'Enter your name';
                               return null;
                             },
                           ),
@@ -138,8 +139,10 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                               prefixIcon: Icon(Icons.email_outlined),
                             ),
                             validator: (val) {
-                              if (val == null || val.isEmpty) return 'Enter your email';
-                              if (!val.contains('@')) return 'Enter a valid email';
+                              if (val == null || val.isEmpty)
+                                return 'Enter your email';
+                              if (!val.contains('@'))
+                                return 'Enter a valid email';
                               return null;
                             },
                           ),
@@ -154,8 +157,10 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                               prefixIcon: Icon(Icons.lock_outlined),
                             ),
                             validator: (val) {
-                              if (val == null || val.isEmpty) return 'Enter a password';
-                              if (val.length < 6) return 'Password must be at least 6 characters';
+                              if (val == null || val.isEmpty)
+                                return 'Enter a password';
+                              if (val.length < 6)
+                                return 'Password must be at least 6 characters';
                               return null;
                             },
                           ),
@@ -168,7 +173,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                                 ? const SizedBox(
                                     height: 20,
                                     width: 20,
-                                    child: CircularProgressIndicator(strokeWidth: 2),
+                                    child: CircularProgressIndicator(
+                                        strokeWidth: 2),
                                   )
                                 : const Text('Sign Up'),
                           ),
@@ -176,14 +182,14 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       ),
                     ),
                     const SizedBox(height: 24),
-                    
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "Already have an account? ",
                           style: TextStyle(
-                            color: theme.textTheme.bodyMedium?.color?.withOpacity(0.6),
+                            color: theme.textTheme.bodyMedium?.color
+                                ?.withValues(alpha: 0.6),
                           ),
                         ),
                         GestureDetector(

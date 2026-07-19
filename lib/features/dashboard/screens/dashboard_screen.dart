@@ -40,15 +40,18 @@ class DashboardScreen extends ConsumerWidget {
                       Text(
                         'Here is your productivity snapshot',
                         style: TextStyle(
-                          color: theme.textTheme.bodyMedium?.color?.withOpacity(0.6),
+                          color: theme.textTheme.bodyMedium?.color
+                              ?.withValues(alpha: 0.6),
                         ),
                       ),
                     ],
                   ),
                   CircleAvatar(
                     radius: 24,
-                    backgroundColor: theme.colorScheme.primary.withOpacity(0.1),
-                    child: Icon(Icons.bolt, color: theme.colorScheme.primary, size: 28),
+                    backgroundColor:
+                        theme.colorScheme.primary.withValues(alpha: 0.1),
+                    child: Icon(Icons.bolt,
+                        color: theme.colorScheme.primary, size: 28),
                   ),
                 ],
               ),
@@ -83,17 +86,21 @@ class DashboardScreen extends ConsumerWidget {
               // Completed vs Pending Chart
               Text(
                 'Task Status',
-                style: GoogleFonts.outfit(fontSize: 18, fontWeight: FontWeight.bold),
+                style: GoogleFonts.outfit(
+                    fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               GlassCard(
                 child: SizedBox(
                   height: 180,
-                  child: stats.completedTasksCount == 0 && stats.pendingTasksCount == 0
+                  child: stats.completedTasksCount == 0 &&
+                          stats.pendingTasksCount == 0
                       ? Center(
                           child: Text(
                             'Add tasks to see chart data',
-                            style: TextStyle(color: theme.textTheme.bodyMedium?.color?.withOpacity(0.5)),
+                            style: TextStyle(
+                                color: theme.textTheme.bodyMedium?.color
+                                    ?.withValues(alpha: 0.5)),
                           ),
                         )
                       : Row(
@@ -106,17 +113,23 @@ class DashboardScreen extends ConsumerWidget {
                                   sections: [
                                     PieChartSectionData(
                                       color: theme.colorScheme.primary,
-                                      value: stats.completedTasksCount.toDouble(),
+                                      value:
+                                          stats.completedTasksCount.toDouble(),
                                       title: '${stats.completedTasksCount}',
                                       radius: 40,
-                                      titleStyle: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                                      titleStyle: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
                                     ),
                                     PieChartSectionData(
-                                      color: AppColors.error.withOpacity(0.6),
+                                      color: AppColors.error
+                                          .withValues(alpha: 0.6),
                                       value: stats.pendingTasksCount.toDouble(),
                                       title: '${stats.pendingTasksCount}',
                                       radius: 40,
-                                      titleStyle: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                                      titleStyle: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
                                     ),
                                   ],
                                 ),
@@ -126,9 +139,11 @@ class DashboardScreen extends ConsumerWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                _buildLegendItem('Completed', theme.colorScheme.primary),
+                                _buildLegendItem(
+                                    'Completed', theme.colorScheme.primary),
                                 const SizedBox(height: 8),
-                                _buildLegendItem('Pending', AppColors.error.withOpacity(0.6)),
+                                _buildLegendItem('Pending',
+                                    AppColors.error.withValues(alpha: 0.6)),
                               ],
                             ),
                             const SizedBox(width: 16),
@@ -141,7 +156,8 @@ class DashboardScreen extends ConsumerWidget {
               // Weekly Progress Bar Chart
               Text(
                 'Weekly Productivity',
-                style: GoogleFonts.outfit(fontSize: 18, fontWeight: FontWeight.bold),
+                style: GoogleFonts.outfit(
+                    fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               GlassCard(
@@ -154,17 +170,30 @@ class DashboardScreen extends ConsumerWidget {
                         gridData: const FlGridData(show: false),
                         borderData: FlBorderData(show: false),
                         titlesData: FlTitlesData(
-                          rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                          topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                          leftTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                          rightTitles: const AxisTitles(
+                              sideTitles: SideTitles(showTitles: false)),
+                          topTitles: const AxisTitles(
+                              sideTitles: SideTitles(showTitles: false)),
+                          leftTitles: const AxisTitles(
+                              sideTitles: SideTitles(showTitles: false)),
                           bottomTitles: AxisTitles(
                             sideTitles: SideTitles(
                               showTitles: true,
                               getTitlesWidget: (val, meta) {
-                                const days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+                                const days = [
+                                  'M',
+                                  'T',
+                                  'W',
+                                  'T',
+                                  'F',
+                                  'S',
+                                  'S'
+                                ];
                                 return Text(
                                   days[val.toInt()],
-                                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12),
                                 );
                               },
                             ),
@@ -215,7 +244,8 @@ class DashboardScreen extends ConsumerWidget {
                 title,
                 style: TextStyle(
                   fontSize: 12,
-                  color: theme.textTheme.bodyMedium?.color?.withOpacity(0.6),
+                  color:
+                      theme.textTheme.bodyMedium?.color?.withValues(alpha: 0.6),
                 ),
               ),
               Text(
@@ -241,7 +271,8 @@ class DashboardScreen extends ConsumerWidget {
           decoration: BoxDecoration(shape: BoxShape.circle, color: color),
         ),
         const SizedBox(width: 8),
-        Text(title, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+        Text(title,
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
       ],
     );
   }

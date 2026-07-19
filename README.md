@@ -1,31 +1,34 @@
-# 🚀 AI Productivity App
+# 🚀 TaskNova – AI Productivity Workspace
 
-An AI-powered cross-platform productivity application built with **Flutter**, **Firebase**, **Riverpod**, and **Gemini AI** to help users organize tasks, manage notes, plan schedules, and boost productivity through intelligent assistance.
+TaskNova is a modern AI-powered productivity application built with **Flutter**, **Firebase**, **Riverpod**, and **Gemini AI**. It helps users organize tasks, manage notes, plan schedules, and improve productivity through intelligent AI assistance.
+
+---
 
 ## ✨ Features
 
-### ✅ Authentication
+### 🔐 Authentication
 - Secure Firebase Authentication
 - Google Sign-In
 - User Profile Management
 
-### 📝 Task Management
-- Create, update, and delete tasks
+### ✅ Task Management
+- Create, edit, and delete tasks
 - Task categorization
 - Priority levels
 - Due dates
+- Task completion tracking
 - Real-time synchronization
 
-### 📒 Smart Notes
+### 📝 Smart Notes
 - Rich note management
 - Search and filter notes
 - Cloud synchronization
 
 ### 🤖 AI Assistant
 - AI-powered productivity assistant
-- Task suggestions
+- Smart task suggestions
 - Intelligent note assistance
-- Schedule generation
+- AI schedule generation
 - Productivity insights
 
 ### ☁️ Cloud Integration
@@ -35,10 +38,10 @@ An AI-powered cross-platform productivity application built with **Flutter**, **
 - Real-time data synchronization
 
 ### 🎨 Modern UI
-- Clean Material Design
+- Material 3 Design
 - Responsive layouts
 - Smooth animations
-- Dark & Light Theme
+- Light & Dark themes
 
 ---
 
@@ -46,12 +49,12 @@ An AI-powered cross-platform productivity application built with **Flutter**, **
 
 | Technology | Purpose |
 |------------|---------|
-| Flutter | Cross-platform development |
+| Flutter | Cross-platform App Development |
 | Dart | Programming Language |
 | Firebase Authentication | User Authentication |
-| Cloud Firestore | Database |
+| Cloud Firestore | Cloud Database |
 | Riverpod | State Management |
-| Gemini AI | AI-powered features |
+| Gemini AI | AI-powered Features |
 | Git & GitHub | Version Control |
 
 ---
@@ -61,14 +64,17 @@ An AI-powered cross-platform productivity application built with **Flutter**, **
 ```
 lib/
 ├── core/
+│   ├── services/
+│   ├── theme/
+│   └── widgets/
 ├── features/
+│   ├── ai_assistant/
 │   ├── auth/
-│   ├── home/
-│   ├── tasks/
+│   ├── dashboard/
 │   ├── notes/
-│   ├── ai/
-│   └── settings/
-├── shared/
+│   ├── schedule/
+│   ├── settings/
+│   └── tasks/
 └── main.dart
 ```
 
@@ -76,24 +82,28 @@ lib/
 
 ## 🚧 Project Status
 
-> **Currently under active development.**
+> 🚧 **TaskNova is actively under development. New features and improvements are being added regularly.**
 
-Upcoming features include:
+### Upcoming Features
 
-- [ ] AI Chat Assistant
-- [ ] Smart Task Recommendations
+- [ ] Complete Firebase Integration
+- [ ] Google Sign-In
+- [ ] Gemini AI Chat Assistant
+- [ ] AI Task Recommendations
 - [ ] AI Schedule Generator
-- [ ] Voice Commands
+- [ ] Push Notifications
 - [ ] Calendar Integration
-- [ ] Notifications
-- [ ] Offline Support
+- [ ] Offline Mode
 - [ ] Analytics Dashboard
+- [ ] Voice Commands
+- [ ] APK Release
+- [ ] Play Store Deployment
 
 ---
 
 ## 📸 Screenshots
 
-> Screenshots will be added as development progresses.
+Application screenshots will be added as development progresses.
 
 ---
 
@@ -103,13 +113,14 @@ Upcoming features include:
 
 - Flutter SDK
 - Dart SDK
+- Android Studio
+- VS Code
 - Firebase Project
-- Android Studio / VS Code
 
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/ai-productivity-app.git
+git clone https://github.com/Piyush7570/ai-productivity-app.git
 
 cd ai-productivity-app
 
@@ -120,28 +131,41 @@ flutter run
 
 ---
 
+## 📌 Roadmap
+
+- ✅ Project Setup
+- ✅ Modern UI Design
+- ✅ Authentication Screens
+- ✅ Dashboard
+- ✅ Task Management
+- 🔄 Firebase Integration
+- 🔄 AI Integration
+- ⏳ App Optimization
+- ⏳ Public Release
+
+---
+
 ## 🤝 Contributing
 
-Contributions, suggestions, and feedback are welcome.
+Contributions, suggestions, and feedback are always welcome.
 
-Feel free to fork the repository and submit a pull request.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
+Feel free to fork the repository, create a feature branch, and submit a pull request.
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Developer
 
 **Piyush Raghuwanshi**
 
 Electronics & Communication Engineering Student
 
-Flutter Developer • Firebase • AI • Open Source Enthusiast
+Flutter Developer • Firebase • AI • Open Source
 
-LinkedIn: *(Add after updating profile)*
+- GitHub: https://github.com/Piyush7570
+- LinkedIn: *(Coming Soon)*
 
-GitHub: https://github.com/Piyush7570
+---
+
+## ⭐ Support
+
+If you like this project, consider giving it a ⭐ on GitHub. It helps the project reach more developers and motivates future improvements.

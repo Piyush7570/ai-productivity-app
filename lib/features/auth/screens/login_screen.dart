@@ -29,7 +29,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   Future<void> _handleLogin() async {
     if (!_formKey.currentState!.validate()) return;
-    
+
     setState(() => _isLoading = true);
     try {
       await ref.read(authControllerProvider.notifier).signIn(
@@ -85,7 +85,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               height: 300,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: theme.colorScheme.primary.withOpacity(0.15),
+                color: theme.colorScheme.primary.withValues(alpha: 0.15),
               ),
             ),
           ),
@@ -97,7 +97,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               height: 250,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: theme.colorScheme.secondary.withOpacity(0.15),
+                color: theme.colorScheme.secondary.withValues(alpha: 0.15),
               ),
             ),
           ),
@@ -119,7 +119,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      'Antigravity AI',
+                      'TaskNova AI',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.outfit(
                         fontSize: 32,
@@ -132,7 +132,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       textAlign: TextAlign.center,
                       style: GoogleFonts.outfit(
                         fontSize: 16,
-                        color: theme.textTheme.bodyMedium?.color?.withOpacity(0.6),
+                        color: theme.textTheme.bodyMedium?.color
+                            ?.withValues(alpha: 0.6),
                       ),
                     ),
                     const SizedBox(height: 40),
@@ -150,7 +151,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          
+
                           // Email Field
                           TextFormField(
                             controller: _emailController,
@@ -160,8 +161,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               prefixIcon: Icon(Icons.email_outlined),
                             ),
                             validator: (val) {
-                              if (val == null || val.isEmpty) return 'Enter your email';
-                              if (!val.contains('@')) return 'Enter a valid email';
+                              if (val == null || val.isEmpty)
+                                return 'Enter your email';
+                              if (!val.contains('@'))
+                                return 'Enter a valid email';
                               return null;
                             },
                           ),
@@ -176,8 +179,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               prefixIcon: Icon(Icons.lock_outlined),
                             ),
                             validator: (val) {
-                              if (val == null || val.isEmpty) return 'Enter your password';
-                              if (val.length < 6) return 'Password must be at least 6 characters';
+                              if (val == null || val.isEmpty)
+                                return 'Enter your password';
+                              if (val.length < 6)
+                                return 'Password must be at least 6 characters';
                               return null;
                             },
                           ),
@@ -190,7 +195,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               onPressed: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (_) => const ForgotPasswordScreen()),
+                                  MaterialPageRoute(
+                                      builder: (_) =>
+                                          const ForgotPasswordScreen()),
                                 );
                               },
                               child: Text(
@@ -211,7 +218,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                 ? const SizedBox(
                                     height: 20,
                                     width: 20,
-                                    child: CircularProgressIndicator(strokeWidth: 2),
+                                    child: CircularProgressIndicator(
+                                        strokeWidth: 2),
                                   )
                                 : const Text('Sign In'),
                           ),
@@ -252,14 +260,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         Text(
                           "Don't have an account? ",
                           style: TextStyle(
-                            color: theme.textTheme.bodyMedium?.color?.withOpacity(0.6),
+                            color: theme.textTheme.bodyMedium?.color
+                                ?.withValues(alpha: 0.6),
                           ),
                         ),
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (_) => const RegisterScreen()),
+                              MaterialPageRoute(
+                                  builder: (_) => const RegisterScreen()),
                             );
                           },
                           child: Text(
