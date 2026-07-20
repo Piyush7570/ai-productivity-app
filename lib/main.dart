@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'core/services/db_service.dart';
 import 'core/services/gemini_service.dart';
 import 'core/services/notification_service.dart';
@@ -11,6 +13,9 @@ import 'features/settings/providers/settings_providers.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   // 1. Initialize local storage (Hive)
   await DatabaseService.init();
@@ -41,7 +46,7 @@ class MyApp extends ConsumerWidget {
     final settings = ref.watch(settingsProvider);
 
     return MaterialApp(
-      title: 'Antigravity AI Workspace',
+      title: 'TaskNova AI Workspace',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
@@ -82,7 +87,7 @@ class SplashScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              'Antigravity AI',
+              'TaskNova AI',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,

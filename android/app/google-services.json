@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "971886861474",
+    "project_id": "tasknova-c05a0",
+    "storage_bucket": "tasknova-c05a0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971886861474:android:8a4514e1dd719785c18bfb",
+        "android_client_info": {
+          "package_name": "com.example.ai_productivity_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRUOP2qvKfmCxnkcTGCmeWUj7DRATOjb0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
