@@ -4,13 +4,9 @@ import '../models/user_model.dart';
 import '../repositories/auth_repository.dart';
 
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
-  FirebaseAuth? auth;
-  try {
-    auth = FirebaseAuth.instance;
-  } catch (_) {
-    // Firebase is not initialized, fallback to mock in repository
-  }
-  return AuthRepository(firebaseAuth: auth);
+  return AuthRepository(
+    firebaseAuth: FirebaseAuth.instance,
+  );
 });
 
 class AuthStateNotifier extends StateNotifier<AsyncValue<UserModel?>> {
@@ -32,7 +28,8 @@ class AuthStateNotifier extends StateNotifier<AsyncValue<UserModel?>> {
   Future<void> signIn(String email, String password) async {
     state = const AsyncValue.loading();
     try {
-      final user = await _repository.signInWithEmail(email: email, password: password);
+      final user =
+          await _repository.signInWithEmail(email: email, password: password);
       state = AsyncValue.data(user);
     } catch (e, stack) {
       state = AsyncValue.error(e, stack);
