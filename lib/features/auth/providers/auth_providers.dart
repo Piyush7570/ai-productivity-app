@@ -33,7 +33,6 @@ class AuthStateNotifier extends StateNotifier<AsyncValue<UserModel?>> {
       state = AsyncValue.data(user);
     } catch (e, stack) {
       state = AsyncValue.error(e, stack);
-      rethrow;
     }
   }
 
@@ -48,7 +47,6 @@ class AuthStateNotifier extends StateNotifier<AsyncValue<UserModel?>> {
       state = AsyncValue.data(user);
     } catch (e, stack) {
       state = AsyncValue.error(e, stack);
-      rethrow;
     }
   }
 

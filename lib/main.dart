@@ -53,11 +53,7 @@ class MyApp extends ConsumerWidget {
       themeMode: settings.themeMode,
       home: authState.when(
         loading: () => const SplashScreen(),
-        error: (err, stack) => Scaffold(
-          body: Center(
-            child: Text('Initialization Error: $err'),
-          ),
-        ),
+        error: (_, __) => const LoginScreen(),
         data: (user) {
           if (user != null) {
             return const MainShell();
