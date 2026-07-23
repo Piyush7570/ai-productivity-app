@@ -1,29 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 import 'firebase_options.dart';
+
 import 'core/services/db_service.dart';
 import 'core/services/gemini_service.dart';
 import 'core/services/notification_service.dart';
 import 'core/theme/app_theme.dart';
-import 'features/auth/providers/auth_providers.dart';
+
+import 'features/auth/providers/auth_session_provider.dart';
 import 'features/auth/screens/login_screen.dart';
+
 import 'features/dashboard/screens/main_shell.dart';
 import 'features/settings/providers/settings_providers.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // 1. Initialize local storage (Hive)
+  // Initialize local storage
   await DatabaseService.init();
 
-  // 2. Initialize Gemini API Client wrapper
+  // Initialize Gemini
   await GeminiService().init();
 
-  // 3. Initialize Local Notifications reminders plugin
+  // Initialize Notifications
   final notifications = NotificationService();
   await notifications.init();
   await notifications.requestPermissions();
@@ -36,13 +41,11 @@ void main() async {
 }
 
 class MyApp extends ConsumerWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Watch Auth state to toggle login/shell
-    final authState = ref.watch(authControllerProvider);
-    // Watch Theme state
+    final authState = ref.watch(authSessionProvider);
     final settings = ref.watch(settingsProvider);
 
     return MaterialApp(
@@ -53,12 +56,22 @@ class MyApp extends ConsumerWidget {
       themeMode: settings.themeMode,
       home: authState.when(
         loading: () => const SplashScreen(),
-        error: (_, __) => const LoginScreen(),
-        data: (user) {
-          if (user != null) {
-            return const MainShell();
+        error: (error, stackTrace) {
+          return Scaffold(
+            body: Center(
+              child: Text(
+                "Authentication Error\n$error",
+                textAlign: TextAlign.center,
+              ),
+            ),
+          );
+        },
+        data: (firebaseUser) {
+          if (firebaseUser == null) {
+            return const LoginScreen();
           }
-          return const LoginScreen();
+
+          return const MainShell();
         },
       ),
     );
@@ -66,11 +79,12 @@ class MyApp extends ConsumerWidget {
 }
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Scaffold(
       body: Center(
         child: Column(
@@ -94,7 +108,9 @@ class SplashScreen extends StatelessWidget {
             const SizedBox(height: 8),
             const SizedBox(
               width: 100,
-              child: LinearProgressIndicator(minHeight: 2),
+              child: LinearProgressIndicator(
+                minHeight: 2,
+              ),
             ),
           ],
         ),
