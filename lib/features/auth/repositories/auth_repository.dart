@@ -1,9 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../models/user_model.dart';
+import '../../../core/services/firestore_service.dart';
 
 class AuthRepository {
   final FirebaseAuth _firebaseAuth;
+  final FirestoreService _firestoreService = FirestoreService();
 
   AuthRepository({required FirebaseAuth firebaseAuth})
       : _firebaseAuth = firebaseAuth;
@@ -86,6 +88,11 @@ class AuthRepository {
       await user.reload();
 
       final updatedUser = _firebaseAuth.currentUser!;
+      await _firestoreService.createUser(
+        uid: updatedUser.uid,
+        displayName: displayName,
+        email: updatedUser.email ?? '',
+      );
 
       return UserModel(
         uid: updatedUser.uid,
